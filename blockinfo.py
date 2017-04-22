@@ -7,7 +7,7 @@ class BlockInfo():
     def __init__(self, hash_value):
         self.api_url = self.get_api_url(hash_value)
         self.block = self.get_block(self.api_url)
-        self.n_tx = 1
+        self.n_tx = self.get_n_tx(self.block)
 
     def get_api_url(self, hash_value):
         api_url = 'https://blockchain.info/block/{}?format=json'
@@ -16,3 +16,6 @@ class BlockInfo():
     def get_block(self, api_url):
         data = urlopen(api_url).read().decode()
         return json.loads(data)
+
+    def get_n_tx(self, block):
+        return block['n_tx']
