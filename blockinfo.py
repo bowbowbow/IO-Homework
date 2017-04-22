@@ -6,7 +6,7 @@ from urllib.request import urlopen
 class BlockInfo():
     def __init__(self, hash_value):
         self.api_url = self.get_api_url(hash_value)
-        self.block = self.get_block(self.api_url)
+        self.block = self.get_block_from_api(self.api_url)
         self.n_tx = self.get_n_tx(self.block)
         self.avg_tx_value = self.get_avg_tx_value(self.n_tx, self.block['tx'])
 
