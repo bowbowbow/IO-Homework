@@ -4,6 +4,7 @@
 class BlockInfo():
     def __init__(self, hash_value):
         self.api_url = self.get_api_url(hash_value)
+        self.n_tx = 1
 
     def get_api_url(self, hash_value):
         api_url = 'https://blockchain.info/block/{}?format=json'
