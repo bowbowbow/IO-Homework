@@ -9,6 +9,7 @@ class BlockInfo():
         self.block = self.get_block_from_api(self.api_url)
         self.n_tx = self.get_n_tx(self.block)
         self.avg_tx_value = self.get_avg_tx_value(self.n_tx, self.block['tx'])
+        self.avg_tx_fee = self.get_avg_tx_fee(self.n_tx, self.block['fee'])
 
     def get_api_url(self, hash_value):
         api_url = 'https://blockchain.info/block/{}?format=json'
@@ -28,3 +29,6 @@ class BlockInfo():
                 value += out['value']
 
         return round(value / n_tx * 1e-8, 8)
+
+    def get_avg_tx_fee(self, n_tx, fee):
+        return round(fee / n_tx * 1e-8, 8)
