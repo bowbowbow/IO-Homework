@@ -22,3 +22,7 @@ def test_n_tx(single_tx_block, multiple_tx_block):
 def test_avg_tx_value(single_tx_block, multiple_tx_block):
     assert math.isclose(single_tx_block.avg_tx_value, 50, rel_tol=1e-8)
     assert math.isclose(multiple_tx_block.avg_tx_value, 39.65358258, rel_tol=1e-8)
+
+def test_avg_tx_fee(single_tx_block, multiple_tx_block):
+    assert math.isclose(single_tx_block.avg_tx_fee, 0, rel_tol=1e-8)
+    assert math.isclose(multiple_tx_block.avg_tx_fee, 0.00044444, rel_tol=1e-8)
