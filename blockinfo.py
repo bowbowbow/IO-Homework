@@ -14,7 +14,7 @@ class BlockInfo():
         api_url = 'https://blockchain.info/block/{}?format=json'
         return api_url.format(hash_value)
 
-    def get_block(self, api_url):
+    def get_block_from_api(self, api_url):
         data = urlopen(api_url).read().decode()
         return json.loads(data)
 
