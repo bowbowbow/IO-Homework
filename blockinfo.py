@@ -5,6 +5,7 @@ import json
 import argparse
 from urllib.request import urlopen
 from urllib.error import HTTPError
+from pprint import pprint
 
 class BlockInfo():
     def __init__(self, hash_value):
@@ -83,7 +84,7 @@ if __name__ == '__main__':
         block_info = BlockInfo(args.hash_value)
 
         if input_or_output == 'input':
-            pass
+            pprint(block_info.tx_inputs)
         elif input_or_output == 'output':
             pass
         else:
