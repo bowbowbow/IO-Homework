@@ -15,7 +15,7 @@
 
 커맨드라인에서 아래와 같이 실행합니다.
 
-### 블록 정보 출력
+#### 블록 정보 출력
 
 ```bash
 $ python3 blockinfo.py <hash_value>
@@ -33,7 +33,7 @@ $ python3 blockinfo.py <hash_value>
     - 각 트랜잭션의 'size'를 모두 더한 후 트랜잭션의 개수로 나눈 값으로 int 형식으로 표기
 
 
-### 블록 내 트랜잭션의 Input 혹은 Output 정보 출력
+#### 블록 내 트랜잭션의 Input 혹은 Output 정보 출력
 
 ```bash
 $ python3 blockinfo.py <hash_value> <input | output>
