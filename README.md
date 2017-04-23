@@ -1,5 +1,10 @@
 # 비트코인 블록 분석
 
+[![Build Status (Travis CI)][ci-svg]][ci]
+
+[ci-svg]: https://api.travis-ci.org/earlbread/IO-Homework.svg
+[ci]: https://travis-ci.org/earlbread/IO-Homework
+
 비트코인 블록의 해쉬 값을 입력으로 받아 블록의 데이터를 출력합니다.
 
 ## 요구사항
