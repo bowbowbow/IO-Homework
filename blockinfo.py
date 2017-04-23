@@ -1,7 +1,10 @@
 """Parse Bitcoin Block Information from blockchain.info API
 """
+import sys
 import json
+import argparse
 from urllib.request import urlopen
+from urllib.error import HTTPError
 
 class BlockInfo():
     def __init__(self, hash_value):
@@ -40,3 +43,47 @@ class BlockInfo():
             size += tx['size']
 
         return round(size / n_tx)
+
+    def get_tx_info(self):
+        tx_info = {}
+        tx_info['n_tx'] = self.n_tx
+        tx_info['avg_tx_value'] = self.avg_tx_value
+        tx_info['avg_tx_fee'] = self.avg_tx_fee
+        tx_info['avg_tx_size'] = self.avg_tx_size
+
+        return tx_info
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser();
+    parser.add_argument('hash_value', help='Bitcoin block hash')
+    parser.add_argument("input_or_output",
+                        nargs='?',
+                        choices=['input', 'output'],
+                        help="Print inputs or outputs of the transactions")
+    args = parser.parse_args();
+
+    input_or_output = ''
+
+    if args.input_or_output is not None:
+        input_or_output = args.input_or_output
+
+    try:
+        block_info = BlockInfo(args.hash_value)
+
+        if input_or_output == 'input':
+            pass
+        elif input_or_output == 'output':
+            pass
+        else:
+            tx_info = block_info.get_tx_info()
+            print('Number of Transactions: {}'.format(tx_info['n_tx']))
+            print('Average Value of Transactions: {:.8f} BTC'.format(tx_info['avg_tx_value']))
+            print('Average Fee of Transactions: {:.8f} BTC'.format(tx_info['avg_tx_fee']))
+            print('Average Size of Transactions: {} bytes'.format(tx_info['avg_tx_size']))
+
+    except HTTPError as err:
+        if err.getcode() == 500:
+            print('Block hash is invalid')
+        else:
+            print('Unexpected Error: {}'.format(sys.exc_info()[0]))
+            raise
