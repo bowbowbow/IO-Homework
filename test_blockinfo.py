@@ -38,3 +38,13 @@ def test_avg_tx_fee(single_tx_block, multiple_tx_block):
 def test_avg_tx_size(single_tx_block, multiple_tx_block):
     assert single_tx_block.avg_tx_size == 204
     assert multiple_tx_block.avg_tx_size == 460
+
+def test_tx_inputs(single_tx_block, multiple_tx_block):
+    tx_inputs = single_tx_block.tx_inputs
+    assert len(tx_inputs) == 1
+
+    tx_inputs = multiple_tx_block.tx_inputs
+    assert len(tx_inputs) == 9
+    tx_input = tx_inputs[5]
+    assert tx_input['hash'] == 'dce1b8cdb8cf06915c217c18fd28ffcbca90e70b280651302b2fdd47748ca25b'
+    assert len(tx_input['inputs']) == 2
