@@ -10,17 +10,39 @@
 
 커맨드라인에서 아래와 같이 실행합니다.
 
-블록 정보 출력
+### 블록 정보 출력
 
 ```bash
 $ python3 blockinfo.py <hash_value>
 ```
 
-블록 내 트랜잭션의 Input 혹은 Output 정보 출력
+각 출력 값 정보는 다음을 나타냅니다.
+
+- Number of Transactions
+    - 해당 블록의 트랜잭션 개수, 'n_tx'
+- Average Value of Transactions
+    - 각 트랜잭션의 'value' 값을 모두 더한 후 트랜잭션의 개수로 나눈 값으로 비트코인 최소 단위(1사토시)까지 표기
+- Average Fee of Transactions
+    - 해당 블록의 'fee'를 트랜잭션의 개수로 나눈 값으로 비트코인 최소 단위(1사토시)까지 표기
+- Average Size of Transactions
+    - 각 트랜잭션의 'size'를 모두 더한 후 트랜잭션의 개수로 나눈 값으로 int 형식으로 표기
+
+
+### 블록 내 트랜잭션의 Input 혹은 Output 정보 출력
 
 ```bash
 $ python3 blockinfo.py <hash_value> <input | output>
 ```
+
+각 출력 값 정보는 다음을 나타냅니다.
+
+input
+- hash : 각 트랜잭션의 hash 값
+- inputs : 각 트랜잭션의 'inputs' 정보
+
+output
+- hash : 각 트랜잭션의 hash 값
+- outputs : 각 트랜잭션의 'out' 정보
 
 
 ## 테스트하기
