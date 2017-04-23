@@ -14,6 +14,7 @@ class BlockInfo():
         self.avg_tx_value = self.get_avg_tx_value(self.n_tx, self.block['tx'])
         self.avg_tx_fee = self.get_avg_tx_fee(self.n_tx, self.block['fee'])
         self.avg_tx_size = self.get_avg_tx_size(self.n_tx, self.block['tx'])
+        self.tx_inputs = self.get_tx_inputs(self.block['tx'])
 
     def get_api_url(self, hash_value):
         api_url = 'https://blockchain.info/block/{}?format=json'
@@ -43,6 +44,17 @@ class BlockInfo():
             size += tx['size']
 
         return round(size / n_tx)
+
+    def get_tx_inputs(self, transactions):
+        inputs = []
+        for tx in transactions:
+            tx_input = {}
+            tx_input['hash'] = tx['hash']
+            tx_input['inputs'] = tx['inputs']
+
+            inputs.append(tx_input)
+
+        return inputs
 
     def get_tx_info(self):
         tx_info = {}
