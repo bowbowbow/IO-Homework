@@ -98,7 +98,7 @@ if __name__ == '__main__':
         if input_or_output == 'input':
             pprint(block_info.tx_inputs)
         elif input_or_output == 'output':
-            pass
+            pprint(block_info.tx_outputs)
         else:
             tx_info = block_info.get_tx_info()
             print('Number of Transactions: {}'.format(tx_info['n_tx']))
