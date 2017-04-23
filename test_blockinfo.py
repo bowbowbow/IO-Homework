@@ -3,12 +3,12 @@ import pytest
 from blockinfo import BlockInfo
 from urllib.error import HTTPError
 
-@pytest.fixture
+@pytest.fixture(scope='module')
 def single_tx_block():
     hash_value = '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f'
     return BlockInfo(hash_value)
 
-@pytest.fixture
+@pytest.fixture(scope='module')
 def multiple_tx_block():
     hash_value = '0000000000000e102232eeb35175920438b8d8de12cab20f3e4d5b6e56dbca95'
     return BlockInfo(hash_value)
