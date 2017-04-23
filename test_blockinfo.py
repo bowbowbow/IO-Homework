@@ -48,3 +48,13 @@ def test_tx_inputs(single_tx_block, multiple_tx_block):
     tx_input = tx_inputs[5]
     assert tx_input['hash'] == 'dce1b8cdb8cf06915c217c18fd28ffcbca90e70b280651302b2fdd47748ca25b'
     assert len(tx_input['inputs']) == 2
+
+def test_tx_outputs(single_tx_block, multiple_tx_block):
+    tx_outputs = single_tx_block.tx_outputs
+    assert len(tx_outputs) == 1
+
+    tx_outputs = multiple_tx_block.tx_outputs
+    assert len(tx_outputs) == 9
+    tx_output = tx_outputs[0]
+    assert tx_output['hash'] == 'c81d11dd31a8f37824d81290a983b8d815fd17def166f3a4b722604639d70011'
+    assert len(tx_output['outputs']) == 46
