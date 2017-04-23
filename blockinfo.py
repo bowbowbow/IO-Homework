@@ -36,9 +36,11 @@ class BlockInfo():
             for out in tx['out']:
                 value += out['value']
 
+        # Rounded to 8 decimal places because it is minimum unit
         return round(value / n_tx * 1e-8, 8)
 
     def get_avg_tx_fee(self, n_tx, fee):
+        # Rounded to 8 decimal places because it is minimum unit
         return round(fee / n_tx * 1e-8, 8)
 
     def get_avg_tx_size(self, n_tx, transactions):
@@ -46,6 +48,7 @@ class BlockInfo():
         for tx in transactions:
             size += tx['size']
 
+        # Rounded to int because size is int
         return round(size / n_tx)
 
     def get_tx_inputs(self, transactions):
